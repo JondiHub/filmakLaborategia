@@ -1,0 +1,2 @@
+1.- jobs erabiliz irekita dauden prozesuak ikusten dira. Nola ixten dira prozesu horiek?
+2.- urls.py.save fitxategi hori zer da?
