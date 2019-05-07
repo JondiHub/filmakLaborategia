@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, url
 
 # Uncomment the next two lines to enable the admin:
 urlpatterns = patterns('filmak.views',
@@ -10,6 +10,8 @@ urlpatterns = patterns('filmak.views',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^$', 'index'),
+    url(r'^$', 'hasieraMenua', name='home'),
+    url(r'^index/$', 'index', name='index'),
+    url(r'^signup/$', 'signup', name='signup'),
     url(r'^(?P<filma_id>\d+)/$', 'detail'),
 )

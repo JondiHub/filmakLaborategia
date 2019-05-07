@@ -1,3 +1,6 @@
+{% extends "filmak/hasieraMenua.html" %}
+
+{% block edukia %}
 {% if film_guztiak %}
 	<ul>
 	{% for film in film_guztiak %}
@@ -7,3 +10,4 @@
 {% else %}
 	<p>No filmak are available.</p>
 {% endif %}
+{% endblock %}
