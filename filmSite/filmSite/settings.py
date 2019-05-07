@@ -1,6 +1,6 @@
 # Django settings for filmSite project.
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -155,3 +155,5 @@ LOGGING = {
         },
     }
 }
+
+LOGIN_REDIRECT_URL = '/filmak'

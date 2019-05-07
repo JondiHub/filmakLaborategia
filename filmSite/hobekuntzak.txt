@@ -1,0 +1,3 @@
+Egin daitezkeen hobekuntzak:
+
+Login via Gmail: https://wsvincent.com/django-user-authentication-tutorial-login-and-logout/
