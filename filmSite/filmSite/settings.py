@@ -1,6 +1,6 @@
 # Django settings for filmSite project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -108,6 +108,7 @@ WSGI_APPLICATION = 'filmSite.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    "/home/user18/filmenGunea/filmSite/templates"
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )

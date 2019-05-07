@@ -1,0 +1,9 @@
+{% if film_guztiak %}
+	<ul>
+	{% for film in film_guztiak %}
+		<li><a href="/filmak/{{film.id}}/">{{film.izenburua}} </a></li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No filmak are available.</p>
+{% endif %}
