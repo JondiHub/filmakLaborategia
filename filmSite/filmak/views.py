@@ -8,6 +8,8 @@ from django.shortcuts import render, redirect
 from filmak.models import Filma
 
 # Create your views here.
+def homeT(request):
+	return render_to_response('orokorra/homeT.html')
 
 def hasieraMenua(request):
 	return render_to_response('filmak/hasieraMenua.html')

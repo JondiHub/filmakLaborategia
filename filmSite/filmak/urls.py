@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 urlpatterns = patterns('filmak.views',
@@ -13,5 +13,7 @@ urlpatterns = patterns('filmak.views',
     url(r'^$', 'hasieraMenua', name='home'),
     url(r'^index/$', 'index', name='index'),
     url(r'^signup/$', 'signup', name='signup'),
+    url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
     url(r'^(?P<filma_id>\d+)/$', 'detail'),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 )

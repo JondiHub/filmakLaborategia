@@ -156,4 +156,5 @@ LOGGING = {
     }
 }
 
-LOGIN_REDIRECT_URL = '/filmak'
+
+LOGIN_REDIRECT_URL = '/'
