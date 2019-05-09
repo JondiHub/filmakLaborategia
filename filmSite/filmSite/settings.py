@@ -156,4 +156,4 @@ LOGGING = {
     }
 }
 
-LOGIN_REDIRECT_URL = '/filmak'
+AUTH_PROFILE_MODULE = 'filmak.models.Bozkatzailea'

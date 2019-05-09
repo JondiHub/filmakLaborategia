@@ -1,11 +1,29 @@
-{% extends "filmak/hasieraMenua.html" %}
+{% extends "filmak/hasierakoOrria.html" %}
+
 {% block edukia %}
 
+<hr>
+
 <h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form method="post" action="/filmak/loginEgin/">
+{% csrf_token %}
+
+<label>Erabiltzailea</label>
+<input type="text" name="erabiltzaileaInput">
+
+<br>
+
+<label>Pasahitza</label>
+<input type="password" name="pasahitzaInput">
+
+<br>
+
+<input type="submit" value="Sartu" />
+
 </form>
+<hr>
 
 {% endblock %}

@@ -9,9 +9,14 @@ urlpatterns = patterns('filmak.views',
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
+	#El segundo aldagaia tiene que coincidir con el "def nombre" de views.
+	#En el url(r'^login/$, 'loginForm', name='login') por ejemplo, el loginForm tiene que estar tambien en el views.py
+
     # Uncomment the next line to enable the admin:
-    url(r'^$', 'hasieraMenua', name='home'),
+    url(r'^$', 'hasierakoMenuaLogged', name='homeLogged'),
     url(r'^index/$', 'index', name='index'),
+    url(r'^login/$', 'loginForm', name='login'),
+    url(r'^loginEgin/$', 'loginEgin', name='loginEgin'),
     url(r'^signup/$', 'signup', name='signup'),
     url(r'^(?P<filma_id>\d+)/$', 'detail'),
 )
