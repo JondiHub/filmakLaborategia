@@ -3,12 +3,16 @@
 
 <ul>
 <li><a href="/filmak/index">Filmen lista</a></li>
+
+<p>User izena: {{ user.username }}</p>
+
 </ul>
 {% block edukia %}
 
 {% endblock %}
 
-{% block home %}
+{% block botoiak %}
 <button type="button" onclick="location.href='/filmak'">Etxera</button>
+<button type="button" onclick="location.href='/filmak/logout'">Logout</button>
 {% endblock %}
 

@@ -1,10 +1,10 @@
 from django.shortcuts import render_to_response, get_object_or_404
 
 from django.template import RequestContext
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 from filmak.models import Filma
 
@@ -14,17 +14,17 @@ def hasierakoOrria(request):
 	return render_to_response('filmak/hasierakoOrria.html')
 
 def hasierakoMenuaLogged(request):
-	return render_to_response('filmak/hasierakoMenuaLogged.html')
+	return render_to_response('filmak/hasierakoMenuaLogged.html', {'user': request.user})
 
 def index(request):
 	film_guztiak = Filma.objects.all()
 	#	t = loader.get_template('filmak/index.html')
 	#	c = Context({'film_guztiak': film_guztiak,})
-	return render_to_response('filmak/index.html', {'film_guztiak': film_guztiak})
+	return render_to_response('filmak/index.html', {'film_guztiak': film_guztiak, 'user': request.user})
 
 def detail(request, filma_id):
 	f = get_object_or_404(Filma, pk=filma_id)
-	return render_to_response('filmak/detail.html', {'film': f})
+	return render_to_response('filmak/detail.html', {'film': f, 'user': request.user})
 
 def signup(request):
     if request.method == 'POST':
@@ -50,8 +50,12 @@ def loginEgin(request):
 	if user is not None:
 		if user.is_active:
 			login(request, user)
-			return HttpResponseRedirect('/filmak/')
+			return render_to_response('filmak/hasierakoMenuaLogged.html', {'user': user}, context_instance=RequestContext(request))
 		else:
-			return render_to_response('filmak/hasierakoOrria.html',{'error_message': "Kontua desgaituta dago."}, context_instance=RequestContext(request))
+			return render_to_response('filmak/login.html',{'error_message': "Kontua desgaituta dago."}, context_instance=RequestContext(request))
 	else:
-		return render_to_response('filmak/hasierakoOrria.html',{'error_message': "Login desegokia."}, context_instance=RequestContext(request))
+		return render_to_response('filmak/login.html',{'error_message': "Login desegokia."}, context_instance=RequestContext(request))
+
+def logoutMan(request):
+       	logout(request)
+	return render_to_response('filmak/hasierakoOrria.html',  context_instance=RequestContext(request))

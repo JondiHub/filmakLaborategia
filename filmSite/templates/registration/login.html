@@ -1,4 +1,4 @@
-{% extends "filmak/hasieraMenua.html" %}
+{% extends "filmak/hasierakoOrria.html" %}
 {% block edukia %}
 
 <h2>Login</h2>
@@ -6,7 +6,7 @@
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Login</button>
+  <input type="hidden" name="next" value="{{next}}" />
 </form>
 
 {% endblock %}
-
