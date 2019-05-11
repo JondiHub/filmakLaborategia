@@ -3,11 +3,12 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 
-from filmak.models import Filma
 
+from filmak.models import Filma
 # Create your views here.
 
 def hasierakoOrria(request):
@@ -26,19 +27,22 @@ def detail(request, filma_id):
 	f = get_object_or_404(Filma, pk=filma_id)
 	return render_to_response('filmak/detail.html', {'film': f, 'user': request.user})
 
-def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('home')
-    else:
-        form = UserCreationForm()
-    return render(request, 'filmak/signup.html', {'form': form})
+def signupForm(request):
+	return render_to_response('filmak/signup.html', {}, context_instance=RequestContext(request))
+
+def signupEgin(request):
+	if request.method == 'POST':
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data.get('username')
+			raw_password = form.cleaned_data.get('password1')
+			user = authenticate(username=username, password=raw_password)
+			login(request, user)
+			return redirect('homeLogged')
+	else:
+		form = UserCreationForm()
+	return render(request, 'filmak/signup.html', {'form': form})
 
 def loginForm(request):
 	return render_to_response('filmak/login.html', {}, context_instance=RequestContext(request))

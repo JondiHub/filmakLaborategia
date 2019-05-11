@@ -1,0 +1,23 @@
+{% extends "filmak/hasierakoOrria.html" %}
+{% block edukia %}
+
+<hr>
+<h2>Sign up</h2>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form method="post" action="/filmak/signupEgin/">
+{% csrf_token %}
+<label>Erabiltzailea: </label>
+<input type="text" name="erabiltzaileaInput">
+<br>
+<label>Pasahitza: </label>
+<input type="password" name="pasahitzaInput">
+<br>
+<label>Pasahitza errepikatu: </label>
+<input type="password" name="pasahitzaInput2">
+
+<br>
+<input type="submit" value="Sortu" />
+
+</form>
+<hr>
+{% endblock %}
