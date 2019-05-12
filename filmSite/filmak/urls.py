@@ -15,6 +15,7 @@ urlpatterns = patterns('filmak.views',
     # Uncomment the next line to enable the admin:
     url(r'^$', 'hasierakoMenuaLogged', name='homeLogged'),
     url(r'^index/$', 'index', name='index'),
+    url(r'^indexPag/$', 'indexPag', name='indexPag'),
     url(r'^loginMan/$', 'loginForm', name='login'),
     url(r'^loginEgin/$', 'loginEgin', name='loginEgin'),
     url(r'^loginAut/$', login, {'template_name': 'registration/login.html', 'extra_context':{'next':'/filmak/'}}),

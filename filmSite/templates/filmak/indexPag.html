@@ -1,0 +1,83 @@
+
+{% extends "filmak/hasierakoMenuaLogged.html" %}
+
+{% block edukia %}
+
+
+{% if filmak %}
+<style>
+
+.pagination-action {
+	margin: 0.1em;
+	display: inline-block;
+	padding: 0.5em;
+	color: #B9B9B9;
+	text-decoration: none;
+}
+
+.pagination-action:hover {
+	color: #3354AA;
+}
+
+</style>
+<hr>
+
+<div style="text-align: center; margin: 1em">
+
+
+{% if filmak.has_previous %}
+	<a class="pagination-action" href="?page=1"><<</a>
+	<a class="pagination-action" href="?page={{filmak.previous_page_number }}"><</a>
+{% endif %}
+
+{% for num in filmak.paginator.page_range %}
+	{% if filmak.number = num %}
+		<strong>{{ num }}</strong>
+	{% else %}
+		{{ num }}
+	{% endif %}
+{% endfor %}
+
+{% if filmak.has_next %}
+
+        <a class="pagination-action" href="?page={{ filmak.next_page_number }}">></a>
+        <a class="pagination-action" href="?page={{ filmak.paginator.num_pages }}">>></a>
+
+{% endif %}
+
+
+</div>
+        <ul>
+        {% for film in filmak %}
+		
+                <li><a href="/filmak/{{film.id}}/">{{film.izenburua}} </a></li>
+		<h1>{{ film.izenburua }}</h1>
+
+		<table border="1">
+
+		<tr>
+		<td><h3>Zuzendaria</h3></td><td>{{ film.zuzendaria }}</td>
+		</tr>
+		<tr>
+		<td><h3>Urtea</h3></td><td>{{ film.urtea }}</td>
+		</tr>
+		<tr>
+		<td><h3>Generoa</h3></td><td>{{ film.generoa }}</td>
+		</tr>
+		<tr>
+		<td><h3>Sinopsia</h3></td><td>{{ film.sinopsia }}</td>
+		</tr>
+		</table>
+		
+		<br>
+        {% endfor %}
+        </ul>
+
+{% else %}
+        <p>No filmak are available.</p>
+{% endif %}
+
+<hr>
+
+{% endblock %}
+

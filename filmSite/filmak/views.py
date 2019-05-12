@@ -1,12 +1,11 @@
 from django.shortcuts import render_to_response, get_object_or_404
-
 from django.template import RequestContext
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from filmak.models import Filma
 # Create your views here.
@@ -22,6 +21,18 @@ def index(request):
 	#	t = loader.get_template('filmak/index.html')
 	#	c = Context({'film_guztiak': film_guztiak,})
 	return render_to_response('filmak/index.html', {'film_guztiak': film_guztiak, 'user': request.user})
+
+def indexPag(request):
+	filmak = Filma.objects.all()
+	paginator = Paginator(filmak, 3)
+	page = request.GET.get('page')
+	try:
+		filmak = paginator.page(page)
+	except PageNotAnInteger:
+		filmak = paginator.page(1)
+	except EmptyPage:
+		filmak = paginator.page(paginator.num_pages)
+	return render(request, 'filmak/indexPag.html', {'filmak': filmak})
 
 def detail(request, filma_id):
 	f = get_object_or_404(Filma, pk=filma_id)
