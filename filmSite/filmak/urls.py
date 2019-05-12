@@ -22,6 +22,7 @@ urlpatterns = patterns('filmak.views',
     url(r'^signupMan/$', 'signupEgin', name='signup'),
     url(r'^signupEgin/$', 'signupEgin', name='signupEgin'),
     #url(r'^signupAut/$' , signup, {'template_name': 'registration/signup.html', 'extra_context':{'next':'/filmak/}'}}),
-    url(r'^logout/$', 'logoutMan', name='logoutMan'),
+    url(r'^logoutMan/$', 'logoutMan', name='logoutMan'),
+    url(r'^logoutAut/$', logout, {'next_page':'/'}),
     url(r'^(?P<filma_id>\d+)/$', 'detail'),
 )
