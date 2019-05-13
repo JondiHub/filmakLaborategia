@@ -25,4 +25,5 @@ urlpatterns = patterns('filmak.views',
     url(r'^logoutMan/$', 'logoutMan', name='logoutMan'),
     url(r'^logoutAut/$', logout, {'next_page':'/'}),
     url(r'^(?P<filma_id>\d+)/$', 'detail'),
+
 )
