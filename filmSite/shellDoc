@@ -1,0 +1,23 @@
+IMPORTAK
+>>> from filmak.models import Filma, Bozkatzailea
+>>> from django.contrib.auth.models import User
+FILMA SORTU
+>>>filmaProba = Filma(id=10, izenburua="filma probetarako", zuzendaria="jon diez", urtea=2019, generoa = "AA", sinopsia="ez dut spoilerrik egin nahi.", bozkak=0)
+ERABILTZAILEA SORTU
+>>> userProba = User(id=110, username="userProbarako, first_name="jon", last_name="diez", email="a", password="a", bozkak=1)
+BOZKATZAILEA SORTU
+>>> bozkaProba = Bozkatzailea(10, 110)
+FILMA GEHITU DELA ZIURTATU
+>>> Filma.objects.all()
+[<Filma: filma probetarako>, <Filma: Earthlings>, <Filma: The Herd>, <Filma: Dominion>, <Filma: Matadero: lo que la industria cárnica esconde>, <Filma: Gurean: animalien erabilera Euskal Herriko festetan>, <Filma: Hiltegiak Euskal Herrian>, <Filma: Cowspiracy: The Sustainability Secret>, <Filma: Munich 1962: isildu egia>]
+BOZKATZAILEAREN FILMAK
+>>> bozkaProba.filmak.all()
+[]
+BOZKATZAILEARI FILMA GEHITU
+>>> bozkaProba.filmak.add(filmaProba)
+BOZKATZAILEAN FILMAK IKUSTEN DIRELA ZIURTATU
+>>> bozkaProba.filmak.all()
+[<Filma: filma probetarako>]
+FILMAN BOZKATZAILEAK IKUSTEN DIRELA ZIURTATU
+>>> filmaProba.bozkatzailea_set.all()
+[<Bozkatzailea: userProbarako>]

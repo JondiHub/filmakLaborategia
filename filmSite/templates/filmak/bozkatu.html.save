@@ -1,0 +1,29 @@
+{% extends "filmak/hasierakoMenuaLogged.html" %}
+
+{% block edukia %}
+
+<hr>
+
+<h2>Filmen lista</h2>
+{% if film_guztiak %}
+        {{error_message}}:{{id}}
+	<ul>
+	<form action="/filmak/bozkatuID/{{film.id}}" method="post">
+        {% for film in film_guztiak %}
+                <li><a href="/filmak/{{film.id}}/">{{film.izenburua}} </a></li>
+		<input type="radio" name="bozkatu" id="bozkatu{{film.id}}" value="{{film.id}}"></input>
+		<br>
+		<br>
+        {% endfor %}
+        </ul>
+	<input type="submit" value="Bozkatu"/
+>
+	</form>
+{% else %}
+        <p>No filmak are available.</p>
+{% endif %}
+
+<hr>
+
+
+{% endblock %}

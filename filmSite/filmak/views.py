@@ -74,3 +74,11 @@ def loginEgin(request):
 def logoutMan(request):
        	logout(request)
 	return render_to_response('filmak/hasierakoOrria.html',  context_instance=RequestContext(request))
+
+def bozkatu(request):
+	film_guztiak = Filma.objects.all()
+	return render_to_response('filmak/bozkatu.html', {'film_guztiak': film_guztiak, 'user': request.user})
+
+def bozkatuID(request, filma_id):
+	film_guztiak = Filma.objects.all()
+	return render_to_response('filmak/bozkatu.html', {'film_guztiak': film_guztiak, 'user': request.uesr, 'id': filma_id, 'message':"Bozkaketa gorde da"})
